@@ -1,0 +1,41 @@
+### Recuperar todas las peliculas
+GET http://localhost:1234/movies
+
+### recuperar una pelicula por id
+GET http://localhost:1234/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+
+### Recuperar todas las peliculas por un genero (lo que usamos aquí se llama "query param")
+GET http://localhost:1234/movies?genre=ACtIon
+
+### Crear una pelicula con post (no tiene id porque se crea un nuevo recurso)
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+  "sql": "SELECT * FROM users",
+  "title": "El padrino",
+  "year": 1975,
+  "director": "Francis Ford Copola",
+  "duration": 175,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
+  "genre": ["Crime", "Drama"]
+}
+
+### Crear una pelicula con post (datos incorrectos)
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+  "title": 1,
+  "year": "pepote"
+}
+
+### Actualizar una pelicula
+PATCH http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+  "id" : 123,
+  "title" : "Hola!!",
+  "year": 1998
+}
